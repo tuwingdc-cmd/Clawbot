@@ -1,13 +1,36 @@
 {
+  "meta": {
+    "lastTouchedVersion": "2026.2.24"
+  },
   "agents": {
     "defaults": {
       "model": {
-        "primary": "anthropic/claude-sonnet-4-6",
+        "primary": "anthropic/claude-opus-4-6",
         "fallbacks": [
+          "anthropic/claude-sonnet-4-6",
+          "anthropic/claude-haiku-4-5",
+          "openai/gpt-5-pro",
           "openai/gpt-5",
+          "openai/gpt-4o",
+          "google/gemini-3.1-pro-preview",
           "google/gemini-2.5-pro",
-          "xai/grok-4"
+          "xai/grok-4",
+          "xai/grok-3",
+          "mistral/mistral-large-latest",
+          "openrouter/anthropic/claude-opus-4.6",
+          "openrouter/openai/gpt-5",
+          "openrouter/google/gemini-2.5-pro"
         ]
+      },
+      "memorySearch": {
+        "enabled": false
+      },
+      "compaction": {
+        "mode": "aggressive"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
       }
     }
   },
@@ -15,14 +38,23 @@
     "discord": {
       "enabled": true,
       "token": "YOUR_DISCORD_BOT_TOKEN",
-      "groupPolicy": "open"
+      "groupPolicy": "open",
+      "streaming": "off",
+      "commands": {
+        "native": true,
+        "nativeSkills": true
+      },
+      "configWrites": true,
+      "allowBots": false
     },
     "telegram": {
       "enabled": true,
-      "token": "YOUR_TELEGRAM_BOT_TOKEN"
+      "token": "YOUR_TELEGRAM_BOT_TOKEN",
+      "groupPolicy": "open"
     },
     "whatsapp": {
-      "enabled": true
+      "enabled": true,
+      "groupPolicy": "open"
     }
   },
   "gateway": {
@@ -31,5 +63,26 @@
       "mode": "token",
       "token": "YOUR_GATEWAY_TOKEN"
     }
+  },
+  "skills": {
+    "entries": {
+      "tavily": {
+        "env": {
+          "TAVILY_API_KEY": "YOUR_TAVILY_API_KEY"
+        }
+      },
+      "coding-agent": {
+        "enabled": true
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
   }
 }
