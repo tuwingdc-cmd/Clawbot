@@ -10,17 +10,22 @@ mkdir -p ~/.openclaw
 
 echo ""
 echo "Pilih config yang ingin digunakan:"
-echo "1) Gratis (Cerebras, Groq, HuggingFace)"
-echo "2) Premium (Claude, GPT-5, Gemini)"
-echo "3) Premium + Multi-Channel (Discord, Telegram, WhatsApp)"
-read -p "Pilihan (1/2/3): " CHOICE
+echo "1) Gratis - Discord only (Cerebras, Groq, HuggingFace)"
+echo "2) Gratis - Multi-Channel Discord+Telegram+WhatsApp"
+echo "3) Premium - Discord only (Claude, GPT-5, Gemini, Grok)"
+echo "4) Premium - Multi-Channel Discord+Telegram+WhatsApp"
+read -p "Pilihan (1/2/3/4): " CHOICE
 
 if [ "$CHOICE" = "1" ]; then
   cp openclaw.example.json ~/.openclaw/openclaw.json
 elif [ "$CHOICE" = "2" ]; then
-  cp openclaw2.example.json ~/.openclaw/openclaw.json
+  cp openclaw.example.json ~/.openclaw/openclaw.json
+  MULTI=true
 elif [ "$CHOICE" = "3" ]; then
+  cp openclaw2.example.json ~/.openclaw/openclaw.json
+elif [ "$CHOICE" = "4" ]; then
   cp openclaw3.example.json ~/.openclaw/openclaw.json
+  MULTI=true
 fi
 
 openclaw config set gateway.mode local
@@ -32,7 +37,7 @@ echo "=============================="
 read -p "Discord Bot Token: " DISCORD_TOKEN
 openclaw config set channels.discord.token "$DISCORD_TOKEN"
 
-if [ "$CHOICE" = "3" ]; then
+if [ "$MULTI" = "true" ]; then
   echo ""
   echo "=============================="
   echo " Isi Token Telegram"
