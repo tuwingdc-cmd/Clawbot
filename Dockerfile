@@ -10,7 +10,7 @@ COPY . .
 RUN mkdir -p /root/.openclaw
 COPY openclaw.example.json /root/.openclaw/openclaw.json
 
-ENV OPENCLAW_GATEWAY_PORT=18789
+ENV OPENCLAW_GATEWAY_PORT=8080
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
