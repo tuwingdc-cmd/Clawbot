@@ -4,6 +4,8 @@ openclaw config set gateway.mode local
 
 if [ -n "$DISCORD_TOKEN" ]; then
   openclaw config set channels.discord.token "$DISCORD_TOKEN"
+else
+  openclaw config set channels.discord.enabled false
 fi
 
 if [ -n "$TELEGRAM_TOKEN" ]; then
