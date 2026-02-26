@@ -48,4 +48,4 @@ if [ -n "$TAVILY_API_KEY" ]; then
   openclaw config set skills.entries.tavily.env.TAVILY_API_KEY "$TAVILY_API_KEY"
 fi
 
-openclaw gateway --port 18789
+openclaw gateway --port 18789 --bind 0.0.0.0
