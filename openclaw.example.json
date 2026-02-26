@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.24",
+    "lastTouchedAt": "2026-02-26T11:13:05.862Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-26T11:13:05.856Z",
+    "lastRunVersion": "2026.2.24",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "openrouter:manual": {
+        "provider": "openrouter",
+        "mode": "token"
+      },
+      "groq:manual": {
+        "provider": "groq",
+        "mode": "token"
+      },
+      "cerebras:manual": {
+        "provider": "cerebras",
+        "mode": "token"
+      },
+      "huggingface:manual": {
+        "provider": "huggingface",
+        "mode": "token"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "cerebras/gpt-oss-120b",
+        "fallbacks": [
+          "cerebras/gpt-oss-120b",
+          "groq/llama-3.3-70b-versatile",
+          "groq/llama-3.1-8b-instant",
+          "huggingface/moonshotai/Kimi-K2-Instruct",
+          "openrouter/meta-llama/llama-3.3-70b-instruct:free"
+        ]
+      },
+      "models": {
+        "nvidia/llama-3.1-nemotron-ultra-253b-v1:free": {},
+        "openrouter/nvidia/nemotron-nano-9b-v2:free": {},
+        "openrouter/meta-llama/llama-3.3-70b-instruct:free": {},
+        "groq/llama-3.3-70b-versatile": {},
+        "groq/llama-3.1-8b-instant": {},
+        "cerebras/llama3.1-8b": {},
+        "cerebras/llama-3.3-70b": {},
+        "cerebras/gpt-oss-120b": {},
+        "huggingface/moonshotai/Kimi-K2-Instruct": {},
+        "huggingface/Qwen/Qwen3-235B-A22B-Thinking": {},
+        "openrouter/google/gemma-3-27b-it:free": {}
+      },
+      "memorySearch": {
+        "enabled": false
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "channels": {
+    "discord": {
+      "enabled": true,
+      "commands": {
+        "native": true,
+        "nativeSkills": true
+      },
+      "configWrites": true,
+      "token": "YOUR_DISCORD_BOT_TOKEN",
+      "allowBots": true,
+      "dangerouslyAllowNameMatching": true,
+      "groupPolicy": "open",
+      "streaming": "off"
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "9c663713837fd00b9f5fa88207e22cfc02cca4be84b1dd6a"
+    }
+  },
+  "skills": {
+    "entries": {
+      "coding-agent": {
+        "enabled": true
+      },
+      "tavily": {
+        "env": {
+          "TAVILY_API_KEY": "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"
+        }
+      }
+    }
+  }
+}
